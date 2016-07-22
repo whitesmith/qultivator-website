@@ -1,0 +1,86 @@
+body{
+    font-family: "juice_regularregular";
+    background: smokewhite;
+    color: #333;
+    width: 100%;
+    height: 100%;
+}
+
+
+.hero{
+    text-align: center;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .hero__title{
+        font-family: "pincoyablackblack";
+        font-size: 10em;
+    }
+    .hero__signature{
+        font-size: 1.5em;
+    }
+
+.garden{
+    height: 94vh;
+    width: 100%;
+    background: lightgrey;
+    box-shadow: inset 0 5px 50px 0 rgba(#333,0.5);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em;
+}
+
+    .plant{
+        border-radius: 10px;
+        width: 400px;
+        height: 470px;
+        background: white;
+        box-shadow: 0 0 10px 0 rgba(#333,0.5);
+        position: relative;
+        margin: 0 3em 3em 0;
+    }
+        .plant__details {
+            margin: 20px 0 0 20px;
+        }
+            .plant__name{
+                margin: 0;
+            }
+        .plant__viewfinder{
+            background: black;
+            width: calc(100% - 131px);
+            padding-bottom: calc(100% - 131px);
+            height: 0;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 20px;
+        }
+        .plant__soil {
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            bottom: 0px;
+            right: 10px;
+        }
+        .plant__environment {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: absolute;
+            right: 10px;
+            bottom: 120px;
+        }
+
+.rbc-center-text {
+    font-size: 0.8em;
+}
+
+.rbc-center-text-line1,
+.rbc-center-text-line2{
+    fill: #333;
+    font-size: 0.75em;
+}
