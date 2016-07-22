@@ -886,11 +886,13 @@ plant2.find('.plant__name')[0].innerText = 'Estufa';
 plant2.find('.plant__viewfinder')[0].style = "background-image: url('../images/plant3.jpg');";
 $('.garden').append(plant2);
 
-$.each( $('svg'), function( key, el ) {
-    el.setAttribute('height','120px');
-    $(el).find('.rbc-center-text-line1')[0].setAttribute('dy','44px');
-    $(el).find('.rbc-center-text-line2')[0].setAttribute('dy','1.3em');
-});
+setTimeout(function(){
+    $.each( $('.garden svg'), function( key, el ) {
+        el.setAttribute('height','120px');
+        $(el).find('.rbc-center-text-line1')[0].setAttribute('dy','44px');
+        $(el).find('.rbc-center-text-line2')[0].setAttribute('dy','1.3em');
+    });
+},0);
 
 function getRandom(min, max) {
     return Math.random() * (max - min) + min;
