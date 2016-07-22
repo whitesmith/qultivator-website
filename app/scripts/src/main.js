@@ -10,7 +10,7 @@ var DISTANCELABELCENTER = 8;
 
 var soilTemperatureOptions = $.extend( {}, defaultOptions, {
     max: 800,
-    series: [{ value: 100, color: ['limegreen', 'red'] } ],
+    series: [{ value: 100, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(0) + '°C' }, 'temperature','soil'], y: DISTANCELABELCENTER },
 } );
 
@@ -18,7 +18,7 @@ var soilTemperatureChart = new RadialProgressChart('.soil_temperature', soilTemp
 
 var environmentHumidityOptions = $.extend( {}, defaultOptions, {
     max: 4,
-    series: [ { value: 1.1, color: ['limegreen', 'red'] } ],
+    series: [ { value: 1.1, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(2) + '%' }, 'humidity','air'], y: DISTANCELABELCENTER },
 } );
 
@@ -27,7 +27,7 @@ var environmentHumidityChart = new RadialProgressChart('.environment_humidity', 
 
 var environmentTemperatureOptions = $.extend( {}, defaultOptions, {
     max: 4,
-    series: [ { value: 2.5, color: ['limegreen', 'red'] } ],
+    series: [ { value: 2.5, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(2) + '°C' }, 'temperature', 'air' ], y: DISTANCELABELCENTER },
 } );
 
@@ -36,7 +36,7 @@ var environmentTemperatureChart = new RadialProgressChart('.environment_temperat
 
 var lightTemperatureOptions = $.extend( {}, defaultOptions, {
     max: 4,
-    series: [ { value: 3.2, color: ['limegreen', 'red'] } ],
+    series: [ { value: 3.2, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(2) + '°C' }, 'temperature', 'light' ], y: DISTANCELABELCENTER },
 } );
 
@@ -45,7 +45,7 @@ var lightTemperatureChart = new RadialProgressChart('.light_temperature', lightT
 
 var lightIntensityOptions = $.extend( {}, defaultOptions, {
     max: 4,
-    series: [ { value: 1.2, color: ['limegreen', 'red'] } ],
+    series: [ { value: 1.2, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(2) + 'lux' }, 'intensity', 'light' ], y: DISTANCELABELCENTER },
 } );
 
@@ -54,7 +54,7 @@ var lightIntensityChart = new RadialProgressChart('.light_intensity', lightInten
 
 var soilHumidityOptions = $.extend( {}, defaultOptions, {
     max: 4,
-    series: [ { value: 2.2, color: ['limegreen', 'red'] } ],
+    series: [ { value: 2.2, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(2) + '%' }, 'humidity', 'soil' ], y: DISTANCELABELCENTER },
 } );
 
