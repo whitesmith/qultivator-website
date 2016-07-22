@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  qultivator-webserver:
+    image: jlbribeiro/qultivator-webserver
+    ports:
+      - 80:80
+  qultivator-ws:
+    image: pmdcosta/qultivator-ws
+    ports:
+      - 8080:8080
