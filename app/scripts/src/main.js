@@ -82,9 +82,12 @@ function drawCharts(plant_id, plant_var){
     })
 
     $(plant_id + '.light-icon').click(function(){
-        qultivatorUser.light("p01", 1);
+        light = (!light)+0;
+        qultivatorUser.light("p01", light);
     })
 }
+
+var light = 1;
 
 var p01={}, p02={}, p03={};
 drawCharts(".p01 ", p01);
