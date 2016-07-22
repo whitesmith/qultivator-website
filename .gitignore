@@ -3,3 +3,11 @@ node_modules
 .DS_Store
 app/styles/styles.css
 dist
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~

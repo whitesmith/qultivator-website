@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: qultivator-nginx
+spec:
+  externalIPs: [<ip_goes_here>]
+  ports:
+  - name: ssl
+    port: 80
+    targetPort: http
+  selector:
+    app: qultivator-nginx
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: qultivator-nginx
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: qultivator-nginx
+    spec:
+      containers:
+        - name: qultivator-nginx
+          image: jlbribeiro/qultivator-webserver
+          resources:
+            requests:
+              memory: "20Mi"
+          ports:
+            - name: http
+              containerPort: 80
