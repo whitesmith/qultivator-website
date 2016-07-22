@@ -1,5 +1,4 @@
-qultivator
-==========================
+# Qultivator Website
 
 Qultivator is a project built under 32h for the Whitesmith Hackathon (July 2016).
 It is a IoT project that allows plants to be individually monitored and taken cared of in real-time.
@@ -15,3 +14,11 @@ gulp
 
 gulp deploy
 ```
+
+#### LINKS
+
+https://qultivator.whitesmith.co
+
+https://github.com/whitesmith/qultivator-website
+
+https://github.com/whitesmith/qultivator-websockets
