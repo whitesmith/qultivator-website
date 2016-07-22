@@ -5,6 +5,7 @@ services:
     image: jlbribeiro/qultivator-webserver
     ports:
       - 80:80
+      - 443:443
   qultivator-ws:
     image: pmdcosta/qultivator-ws
     ports:
