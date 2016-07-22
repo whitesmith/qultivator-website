@@ -11,3 +11,6 @@ dist
 Session.vim
 .netrwhist
 *~
+
+# Self-signed certificate
+*.pem
