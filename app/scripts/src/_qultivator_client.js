@@ -12,7 +12,7 @@ function QultivatorUser(options) {
 }
 
 QultivatorUser._defaultEndpoint = function () {
-  return 'ws' + (window.location.protocol === 'https' ? 's' : '') + '://' + window.location.host + window.location.pathname + 'ws/user';
+  return 'ws' + (window.location.protocol === 'https:' ? 's' : '') + '://' + window.location.host + window.location.pathname + 'ws/user';
 }
 
 QultivatorUser.prototype._onMessage = function (msg) {
