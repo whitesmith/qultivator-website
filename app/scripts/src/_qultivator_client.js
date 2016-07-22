@@ -18,11 +18,12 @@ QultivatorUser._defaultEndpoint = function () {
 QultivatorUser.prototype._onMessage = function (msg) {
   var self = this;
 
+  var data = JSON.parse(msg.data);
   var i;
   for (i = 0; i < this.onDataCallbacks.length; i++) {
     (function (cb) {
       setTimeout(function () {
-        cb.call(self, msg.data);
+        cb.call(self, data);
       }, 0);
     })(this.onDataCallbacks[i]);
   }

@@ -1,3 +1,17 @@
+var qultivatorUser = new QultivatorUser({
+    endpoint: 'ws://qultivator.whitesmith.co/ws/user'
+})
+.onData(function (data) {
+    console.log(data);
+    soilTemperatureChart.update(data.sT);
+    soilHumidityChart.update(data.sH);
+    environmentHumidityChart.update(data.eH);
+    environmentTemperatureChart.update(data.eT);
+    lightTemperatureChart.update(data.lT);
+    lightIntensityChart.update(data.lI);
+});
+qultivatorUser.connect();
+
 var defaultOptions = {
     diameter: 50,
     stroke: { width: 12 },
@@ -8,69 +22,62 @@ var defaultOptions = {
 };
 var DISTANCELABELCENTER = 8;
 
+
+
+
 var soilTemperatureOptions = $.extend( {}, defaultOptions, {
-    max: 800,
-    series: [{ value: 100, color: ['#8BC34A', '#FF5722'] } ],
+    max: 40,
+    series: [{ value: 0, color: ['#8BC34A', '#FF5722'] } ],
     center: { content: [function (d) { return d.toFixed(0) + '°C' }, 'temperature','soil'], y: DISTANCELABELCENTER },
 } );
 
 var soilTemperatureChart = new RadialProgressChart('.soil_temperature', soilTemperatureOptions);
 
 var environmentHumidityOptions = $.extend( {}, defaultOptions, {
-    max: 4,
-    series: [ { value: 1.1, color: ['#8BC34A', '#FF5722'] } ],
-    center: { content: [function (d) { return d.toFixed(2) + '%' }, 'humidity','air'], y: DISTANCELABELCENTER },
+    max: 100,
+    series: [ { value: 0, color: ['#8BC34A', '#FF5722'] } ],
+    center: { content: [function (d) { return d.toFixed(0) + '%' }, 'humidity','air'], y: DISTANCELABELCENTER },
 } );
 
 var environmentHumidityChart = new RadialProgressChart('.environment_humidity', environmentHumidityOptions);
 
 
 var environmentTemperatureOptions = $.extend( {}, defaultOptions, {
-    max: 4,
-    series: [ { value: 2.5, color: ['#8BC34A', '#FF5722'] } ],
-    center: { content: [function (d) { return d.toFixed(2) + '°C' }, 'temperature', 'air' ], y: DISTANCELABELCENTER },
+    max: 40,
+    series: [ { value: 0, color: ['#8BC34A', '#FF5722'] } ],
+    center: { content: [function (d) { return d.toFixed(0) + '°C' }, 'temperature', 'air' ], y: DISTANCELABELCENTER },
 } );
 
 var environmentTemperatureChart = new RadialProgressChart('.environment_temperature', environmentTemperatureOptions);
 
 
 var lightTemperatureOptions = $.extend( {}, defaultOptions, {
-    max: 4,
-    series: [ { value: 3.2, color: ['#8BC34A', '#FF5722'] } ],
-    center: { content: [function (d) { return d.toFixed(2) + '°C' }, 'temperature', 'light' ], y: DISTANCELABELCENTER },
+    max: 15000,
+    series: [ { value: 0, color: ['#8BC34A', '#FF5722'] } ],
+    center: { content: [function (d) { return d.toFixed(0) + 'K' }, 'temperature', 'light' ], y: DISTANCELABELCENTER },
 } );
 
 var lightTemperatureChart = new RadialProgressChart('.light_temperature', lightTemperatureOptions);
 
 
 var lightIntensityOptions = $.extend( {}, defaultOptions, {
-    max: 4,
-    series: [ { value: 1.2, color: ['#8BC34A', '#FF5722'] } ],
-    center: { content: [function (d) { return d.toFixed(2) + 'lux' }, 'intensity', 'light' ], y: DISTANCELABELCENTER },
+    max: 1000,
+    series: [ { value: 0, color: ['#8BC34A', '#FF5722'] } ],
+    center: { content: [function (d) { return d.toFixed(0) + 'lux' }, 'intensity', 'light' ], y: DISTANCELABELCENTER },
 } );
 
 var lightIntensityChart = new RadialProgressChart('.light_intensity', lightIntensityOptions);
 
 
 var soilHumidityOptions = $.extend( {}, defaultOptions, {
-    max: 4,
-    series: [ { value: 2.2, color: ['#8BC34A', '#FF5722'] } ],
-    center: { content: [function (d) { return d.toFixed(2) + '%' }, 'humidity', 'soil' ], y: DISTANCELABELCENTER },
+    max: 100,
+    series: [ { value: 0, color: ['#8BC34A', '#FF5722'] } ],
+    center: { content: [function (d) { return d.toFixed(0) + '%' }, 'humidity', 'soil' ], y: DISTANCELABELCENTER },
 } );
 
-console.log(soilHumidityOptions);
 
 var soilHumidityChart = new RadialProgressChart('.soil_humidity', soilHumidityOptions);
 
-
-var plant = $('.p01').clone().removeClass('p01').addClass('p02');
-plant.find('.plant__name')[0].innerText = 'Office';
-plant.find('.plant__viewfinder')[0].style = "background-image: url('../images/plant2.jpg');";
-$('.garden').append(plant);
-var plant2 = $('.p01').clone().removeClass('p01').addClass('p03');
-plant2.find('.plant__name')[0].innerText = 'Estufa';
-plant2.find('.plant__viewfinder')[0].style = "background-image: url('../images/plant3.jpg');";
-$('.garden').append(plant2);
 
 setTimeout(function(){
     $.each( $('.garden svg'), function( key, el ) {

@@ -112,7 +112,44 @@ body{
             }
         }
 
-.garden__footer{
+.cta{
+    height: 50vh;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 5em 3em;
+}
+    #mc_embed_signup{
+        width: 50%;
+        margin-left: 25%;
+
+        h2{
+            font-size: 1.6em;
+            line-height: 1.8em;
+            margin-bottom: 2em;
+        }
+        input{
+            width: 80%;
+            padding: 1em;
+            border-radius: 10px;
+            border: none;
+            background: #eee;
+            height: 50px;
+            font-size: 1.6em;
+        }
+        input[type="submit"]{
+            width: 30%;
+            padding: 0.5em;
+            line-height: 1em;
+            font-size: 1.2em;
+            margin-top: 1em;
+            cursor: pointer;
+            background: #009688;
+            color: white;
+        }
+    }
+
+.cta__footer{
     position: absolute;
     bottom: 0px;
     left: 0px;
