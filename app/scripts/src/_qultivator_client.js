@@ -55,11 +55,11 @@ QultivatorUser.prototype.onData = function (fn) {
  * @param {number} value - How bright the light should be, from 0 to 1.
  */
 QultivatorUser.prototype.light = function (plantId, value) {
-  return this.socket.send({
+  return this.socket.send(JSON.stringify({
     id: plantId,
     action: 'light',
     value: value
-  });
+  }));
 }
 
 /**
@@ -69,9 +69,9 @@ QultivatorUser.prototype.light = function (plantId, value) {
  * @param {number} value - How open the water tap should be, from 0 to 1.
  */
 QultivatorUser.prototype.water = function (plantId, value) {
-  return this.socket.send({
+  return this.socket.send(JSON.stringify({
     id: plantId,
     action: 'water',
     value: value
-  });
+  }));
 }

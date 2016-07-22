@@ -869,11 +869,11 @@ QultivatorUser.prototype.onData = function (fn) {
  * @param {number} value - How bright the light should be, from 0 to 1.
  */
 QultivatorUser.prototype.light = function (plantId, value) {
-  return this.socket.send({
+  return this.socket.send(JSON.stringify({
     id: plantId,
     action: 'light',
     value: value
-  });
+  }));
 }
 
 /**
@@ -883,19 +883,20 @@ QultivatorUser.prototype.light = function (plantId, value) {
  * @param {number} value - How open the water tap should be, from 0 to 1.
  */
 QultivatorUser.prototype.water = function (plantId, value) {
-  return this.socket.send({
+  return this.socket.send(JSON.stringify({
     id: plantId,
     action: 'water',
     value: value
-  });
+  }));
 }
 
 var qultivatorUser = new QultivatorUser({
-    endpoint: 'ws://qultivator.whitesmith.co/ws/user'
+    endpoint: 'wss://qultivator.whitesmith.co/ws/user'
+    //endpoint: 'ws://192.168.0.9:8080/user'
 })
 .onData(function (data) {
     p01.soilTemperatureChart.update(data.sT);
-    p01.soilHumidityChart.update(data.sH);
+    p01.soilHumidityChart.update((data.sH/10));
     p01.environmentHumidityChart.update(data.eH);
     p01.environmentTemperatureChart.update(data.eT);
     p01.lightTemperatureChart.update(data.lT);
@@ -962,7 +963,7 @@ function drawCharts(plant_id, plant_var){
     plant_var.soilHumidityOptions = $.extend( {}, defaultOptions, {
         max: 100,
         series: [ { value: 0, color: ['#8BC34A', '#FF5722'] } ],
-        center: { content: [function (d) { return d.toFixed(0) + '%' }, 'humidity', 'soil' ], y: DISTANCELABELCENTER },
+        center: { content: [function (d) { return (d).toFixed(0) + '%' }, 'humidity', 'soil' ], y: DISTANCELABELCENTER },
     } );
 
 
