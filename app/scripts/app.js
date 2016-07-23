@@ -826,7 +826,7 @@ function QultivatorUser(options) {
 }
 
 QultivatorUser._defaultEndpoint = function () {
-  return 'ws' + (window.location.protocol === 'https' ? 's' : '') + '://' + window.location.host + window.location.pathname + 'ws/user';
+  return 'ws' + (window.location.protocol === 'https:' ? 's' : '') + '://' + window.location.host + window.location.pathname + 'ws/user';
 }
 
 QultivatorUser.prototype._onMessage = function (msg) {
@@ -991,6 +991,9 @@ setTimeout(function(){
         el.setAttribute('height','120px');
         $(el).find('.rbc-center-text-line1')[0].setAttribute('dy','44px');
         $(el).find('.rbc-center-text-line2')[0].setAttribute('dy','1.3em');
+    });
+    $.each( $('.progress'), function( key, el ) {
+        el.setAttribute('filter','');
     });
 },0);
 

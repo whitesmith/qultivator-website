@@ -100,6 +100,9 @@ setTimeout(function(){
         $(el).find('.rbc-center-text-line1')[0].setAttribute('dy','44px');
         $(el).find('.rbc-center-text-line2')[0].setAttribute('dy','1.3em');
     });
+    $.each( $('.progress'), function( key, el ) {
+        el.setAttribute('filter','');
+    });
 },0);
 
 function getRandom(min, max) {
