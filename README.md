@@ -19,6 +19,6 @@ gulp deploy
 
 https://qultivator.whitesmith.co
 
-https://github.com/whitesmith/qultivator-website
+https://github.com/whitesmith/qultivator-firmware
 
 https://github.com/whitesmith/qultivator-websockets
