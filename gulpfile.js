@@ -169,6 +169,37 @@ gulp.task('html-deploy', function() {
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
         .pipe(gulp.dest('dist/styles'));
+
+});
+
+var ignoreRev = [
+    /^\/favicon.ico$/g,
+    /(^|\/)\.[^\/\.]/g,
+    'README',
+    '.html',
+    '.xml',
+    '.txt',
+    '.jpg',
+    '.png',
+    '.gif',
+    '.ttf',
+    '.eot',
+    '.woff',
+    '.svg',
+    '.otf',
+];
+
+gulp.task('rev-assets', function(){
+    setTimeout(function(){
+        var revAll = new RevAll({
+            dontRenameFile: ignoreRev,
+            dontUpdateReference: ignoreRev,
+        });
+        gulp.src(['dist/**','dist/.**'])
+            .pipe(revAll.revision())
+            .pipe(gulp.dest('rev-dist'));
+    },1000);
+
 });
 
 //cleans our dist directory in case things got deleted
