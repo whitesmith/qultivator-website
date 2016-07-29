@@ -3,6 +3,7 @@ node_modules
 .DS_Store
 app/styles/styles.css
 dist
+rev-dist
 
 # Vim
 [._]*.s[a-w][a-z]
