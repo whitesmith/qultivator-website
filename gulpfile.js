@@ -1,23 +1,21 @@
-//initialize all of our variables
-var app, base, concat, directory, gulp, gutil, hostname, path, refresh, sass, uglify, imagemin, minifyCSS, del, browserSync, autoprefixer, gulpSequence, shell, sourceMaps, plumber;
-
 var autoPrefixBrowserList = ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
 
 //load all of our dependencies
 //add more here if you want to include more libraries
-gulp        = require('gulp');
-gutil       = require('gulp-util');
-concat      = require('gulp-concat');
-uglify      = require('gulp-uglify');
-sass        = require('gulp-sass');
-sourceMaps  = require('gulp-sourcemaps');
-imagemin    = require('gulp-imagemin');
-minifyCSS   = require('gulp-minify-css');
-browserSync = require('browser-sync');
-autoprefixer = require('gulp-autoprefixer');
-gulpSequence = require('gulp-sequence').use(gulp);
-shell       = require('gulp-shell');
-plumber     = require('gulp-plumber');
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var concat       = require('gulp-concat');
+var uglify       = require('gulp-uglify');
+var sass         = require('gulp-sass');
+var sourceMaps   = require('gulp-sourcemaps');
+var imagemin     = require('gulp-imagemin');
+var minifyCSS    = require('gulp-minify-css');
+var browserSync  = require('browser-sync');
+var autoprefixer = require('gulp-autoprefixer');
+var gulpSequence = require('gulp-sequence').use(gulp);
+var shell        = require('gulp-shell');
+var plumber      = require('gulp-plumber');
+var RevAll       = require('gulp-rev-all');
 
 gulp.task('browserSync', function() {
     browserSync({
@@ -171,6 +169,37 @@ gulp.task('html-deploy', function() {
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
         .pipe(gulp.dest('dist/styles'));
+
+});
+
+var ignoreRev = [
+    /^\/favicon.ico$/g,
+    /(^|\/)\.[^\/\.]/g,
+    'README',
+    '.html',
+    '.xml',
+    '.txt',
+    '.jpg',
+    '.png',
+    '.gif',
+    '.ttf',
+    '.eot',
+    '.woff',
+    '.svg',
+    '.otf',
+];
+
+gulp.task('rev-assets', function(){
+    setTimeout(function(){
+        var revAll = new RevAll({
+            dontRenameFile: ignoreRev,
+            dontUpdateReference: ignoreRev,
+        });
+        gulp.src(['dist/**','dist/.**'])
+            .pipe(revAll.revision())
+            .pipe(gulp.dest('rev-dist'));
+    },1000);
+
 });
 
 //cleans our dist directory in case things got deleted
@@ -207,4 +236,4 @@ gulp.task('default', ['browserSync', 'scripts', 'styles'], function() {
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'html-deploy', 'rev-assets'));
